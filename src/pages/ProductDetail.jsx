@@ -5,6 +5,7 @@ import { useCart } from '../contexts/CartContext';
 import { Button } from '../components/Button';
 import { Spinner } from '../components/Spinner';
 import { ErrorMessage } from '../components/ErrorMessage';
+import { formatPrice } from '../utils/formatPrice';
 import './ProductDetail.css';
 
 export function ProductDetail() {
@@ -55,7 +56,7 @@ export function ProductDetail() {
         <div className="product-detail-info">
           <h1>{product.title}</h1>
           <p className="product-detail-category">{product.category}</p>
-          <p className="product-detail-price">${product.price?.toFixed(2)}</p>
+          <p className="product-detail-price">{formatPrice(product.price)}</p>
           {product.rating && (
             <p className="product-detail-rating">
               Rating: {product.rating.rate} ({product.rating.count} reviews)

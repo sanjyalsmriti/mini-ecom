@@ -1,55 +1,168 @@
 .home {
-  padding: 1rem 0;
+  padding: 0;
+  max-width: 100%;
 }
 
-.hero {
+.home--loading {
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero – full-width, modern e‑commerce style */
+.home-hero {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  color: #f8fafc;
+  padding: clamp(2.5rem, 6vw, 4rem) 1rem;
+  margin: 0 -1rem 2rem;
   text-align: center;
-  padding: 3rem 1rem;
-  background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
-  border-radius: 16px;
-  margin-bottom: 2rem;
 }
 
-.hero h1 {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
+.home-hero__inner {
+  max-width: 640px;
+  margin: 0 auto;
 }
 
-.hero p {
+.home-hero__title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.home-hero__subtitle {
   margin: 0 0 1.5rem;
-  color: #475569;
+  font-size: 1rem;
+  color: #94a3b8;
+  line-height: 1.5;
 }
 
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-}
-
-.feature {
-  padding: 1.5rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-.feature h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
-}
-
-.feature p {
-  margin: 0 0 1rem;
-  font-size: 0.9rem;
-  color: #64748b;
-}
-
-.feature a {
-  color: var(--color-primary, #2563eb);
-  font-weight: 500;
+.home-hero__cta {
+  display: inline-block;
   text-decoration: none;
 }
 
-.feature a:hover {
-  text-decoration: underline;
+.home-hero__btn {
+  background: #f59e0b;
+  color: #0f172a;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+}
+
+.home-hero__btn:hover {
+  background: #fbbf24;
+}
+
+/* Section headings */
+.home-section {
+  margin-bottom: 2.5rem;
+}
+
+.home-section__title {
+  margin: 0 0 1.25rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Category grid – cards with images */
+.home-categories__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .home-categories__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.home-category-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.home-category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.home-category-card__image {
+  aspect-ratio: 1;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.home-category-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-category-card__label {
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1e293b;
+  text-align: center;
+}
+
+/* USP strip – trust / benefits */
+.home-usp {
+  background: #f8fafc;
+  margin: 0 -1rem -1rem;
+  padding: 2rem 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.home-usp__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .home-usp__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.home-usp__item {
+  text-align: center;
+}
+
+.home-usp__icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.home-usp__item h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.home-usp__item p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #64748b;
 }

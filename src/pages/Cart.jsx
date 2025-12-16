@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { Button } from '../components/Button';
+import { formatPrice } from '../utils/formatPrice';
 import './Cart.css';
 
 export function Cart() {
@@ -29,7 +30,7 @@ export function Cart() {
               <Link to={`/products/${product.id}`} className="cart-item-title">
                 {product.title}
               </Link>
-              <p className="cart-item-price">${product.price?.toFixed(2)}</p>
+              <p className="cart-item-price">{formatPrice(product.price)}</p>
               <div className="cart-item-actions">
                 <div className="qty-controls">
                   <button
@@ -54,14 +55,14 @@ export function Cart() {
               </div>
             </div>
             <div className="cart-item-subtotal">
-              ${(product.price * quantity).toFixed(2)}
+              {formatPrice(product.price * quantity)}
             </div>
           </div>
         ))}
       </div>
       <div className="cart-summary">
         <p className="cart-total">
-          Total: <strong>${cartTotal.toFixed(2)}</strong>
+          Total: <strong>{formatPrice(cartTotal)}</strong>
         </p>
         <p className="cart-note">Checkout is simulated. No payment is processed.</p>
       </div>

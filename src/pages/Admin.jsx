@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { fetchProducts } from '../services/api';
 import { Spinner } from '../components/Spinner';
 import { ErrorMessage } from '../components/ErrorMessage';
+import { formatPrice } from '../utils/formatPrice';
 import './Admin.css';
 
 /**
@@ -56,7 +57,7 @@ export function Admin() {
                 </td>
                 <td>{p.title}</td>
                 <td>{p.category}</td>
-                <td>${p.price?.toFixed(2)}</td>
+                <td>{formatPrice(p.price)}</td>
                 <td>
                   <button
                     type="button"

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { fetchProducts, fetchCategories } from '../services/api';
 import { useCart } from '../contexts/CartContext';
 import { useDebounce } from '../hooks/useDebounce';
@@ -7,6 +7,7 @@ import { Card, CardImage, CardBody, CardTitle } from '../components/Card';
 import { Button } from '../components/Button';
 import { Spinner } from '../components/Spinner';
 import { ErrorMessage } from '../components/ErrorMessage';
+import { formatPrice } from '../utils/formatPrice';
 import './ProductList.css';
 
 const SORT_OPTIONS = [
@@ -19,6 +20,7 @@ const SORT_OPTIONS = [
 
 export function ProductList() {
   const { addToCart } = useCart();
+  const location = useLocation();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,6 +29,10 @@ export function ProductList() {
   const [category, setCategory] = useState('');
   const [sort, setSort] = useState('');
   const debouncedSearch = useDebounce(search, 300);
+
+  useEffect(() => {
+    if (location.state?.category != null) setCategory(location.state.category);
+  }, [location.state?.category]);
 
   useEffect(() => {
     let cancelled = false;
@@ -112,7 +118,7 @@ export function ProductList() {
                 <CardImage src={product.image} alt={product.title} />
                 <CardBody>
                   <CardTitle>{product.title}</CardTitle>
-                  <p className="product-price">${product.price?.toFixed(2)}</p>
+                  <p className="product-price">{formatPrice(product.price)}</p>
                 </CardBody>
               </Link>
               <div className="product-actions">
